@@ -6,4 +6,5 @@ type Email struct {
 	Login string `toml:"Login"`
 	Password string `toml:"Password"`
 	Port int `toml:"Port"`
+	From string `toml:"From"`
 }

@@ -6,11 +6,10 @@ import (
 	"log"
 )
 
-
-
+//SendEmail func...
 func SendEmail(to, attachmentPath string) error {
 	m := gomail.NewMessage()
-	m.SetHeader("From", models.AppConfig.Email.Login)
+	m.SetHeader("From", models.AppConfig.Email.From)
 	m.SetHeader("To", to)
 	m.SetHeader("Subject", "Got data!")
 	m.SetBody("text/html", "Aloha amigos")
@@ -24,5 +23,7 @@ func SendEmail(to, attachmentPath string) error {
 		)
 	if err := d.DialAndSend(m); err != nil {
 		log.Println("error sending message: ", err)
+		return err
 	}
+	return nil
 }
